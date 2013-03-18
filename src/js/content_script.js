@@ -5,11 +5,11 @@ chrome.extension.sendRequest({
   var selector = response.selector;
   if (!selector) return;
 
-  var redirectTo = $(selector).attr('href');
-  if (!redirectTo) return;
+  var href = $(selector)[0].href;
+  if (!href) return;
 
   chrome.extension.sendRequest({
     method: "redirectTo",
-    url: redirectTo
+    url: href
   });
 });
